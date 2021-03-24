@@ -1,0 +1,42 @@
+
+
+users
+    - first_name
+    - middle_name
+    - last_name
+
+curriculum
+    - year
+    - status
+    - title
+    - description
+year
+    - year_title
+    - year_description
+    - status
+
+course
+    - course_title
+    - course_description
+    - status
+
+course and year
+    - curriculum title
+    - curriculum description
+    - status
+    - course_id
+    - year_id
+    - curriculum_id
+
+subject
+    - title
+    - description
+    - status
+    - total units
+    - lecture units
+    - lab units
+    - pre requisites
+    - course_and_year_id
+
+
+
