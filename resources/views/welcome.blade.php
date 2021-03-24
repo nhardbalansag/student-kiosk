@@ -6,8 +6,19 @@
 
         <title>Laravel</title>
 
+         {{-- admin lte --}}
+        <!-- Google Font: Source Sans Pro -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+        <!-- IonIcons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+        {{-- admin lte end --}}
+
         <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -67,7 +78,7 @@
         </style>
     </head>
     <body>
-        <div  class="">
+        <div>
             <!-- As a link -->
             <nav class="navbar navbar-light bg-light">
                 <div class="container container-fluid">
@@ -75,59 +86,28 @@
                 </div>
             </nav>
             <div class="container mt-5">
-                <div class="d-flex justify-content-center">
-                    <form action="">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Student number</label>
-                            <input required type="text" class="form-control" id="exampleFormControlInput1" placeholder="student number">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Curriculum</label>
-                            <select required class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Year</label>
-                            <select required class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Course</label>
-                            <select required class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Semester</label>
-                            <select required class="form-select" aria-label="Default select example">
-                                <option selected>Semester</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-primary">Submit</button>
-                        </div>
-                   </form>
-                </div>
-                <div class="mt-5 d-flex justify-content-center">
-                    <div class="w-50">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam autem ea optio, ex illo deserunt exercitationem assumenda ullam consequatur cum at velit nihil quas sequi nam quibusdam suscipit placeat quia.</p>
-                    </div>
-                </div>
+                @yield('content-pages')
             </div>
         </div>
+
+        {{-- fontawesome --}}
+        <script src="https://kit.fontawesome.com/9002f92f37.js" crossorigin="anonymous"></script>
+        {{-- end fontawesome --}}
+
+        {{-- admin lte scripts --}}
+            <!-- jQuery -->
+            <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+            <!-- Bootstrap -->
+            <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+            <!-- AdminLTE -->
+            <script src="{{ asset('dist/js/adminlte.js') }}"></script>
+
+            <!-- OPTIONAL SCRIPTS -->
+            <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
+            <!-- AdminLTE for demo purposes -->
+            <script src="{{ asset('dist/js/demo.js') }}"></script>
+            <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+            <script src="{{ asset('dist/js/pages/dashboard3.js') }}"></script>
+        {{-- end admin lte scripts --}}
     </body>
 </html>
