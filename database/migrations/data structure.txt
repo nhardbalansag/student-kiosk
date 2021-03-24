@@ -20,6 +20,10 @@ course
     - course_description
     - status
 
+semester
+    - title 
+    - description
+
 course and year
     - curriculum title
     - curriculum description
@@ -35,7 +39,7 @@ subject
     - total units
     - lecture units
     - lab units
-    - pre requisites
+    - pre requisite
     - course_and_year_id
 
 
