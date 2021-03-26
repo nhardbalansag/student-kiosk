@@ -52,7 +52,6 @@
                                 <th>#</th>
                                 <th>Subject Code</th>
                                 <th>Description</th>
-                                <th>Faculty Name</th>
                                 <th>Units</th>
                                 <th>Sect Code</th>
                                 <th>Final Grade</th>
@@ -63,7 +62,6 @@
                                 <td>1</td>
                                 <td>IT-ELEC3</td>
                                 <td>BSIT ELECTIVE 3</td>
-                                <td>jhon doe</td>
                                 <td>3.0</td>
                                 <td>BSIT</td>
                                 <td>
@@ -96,7 +94,6 @@
                                 <td>1</td>
                                 <td>IT-ELEC3</td>
                                 <td>BSIT ELECTIVE 3</td>
-                                <td>jhon doe</td>
                                 <td>3.0</td>
                                 <td>BSIT</td>
                                 <td>
@@ -129,7 +126,6 @@
                                 <td>1</td>
                                 <td>IT-ELEC3</td>
                                 <td>BSIT ELECTIVE 3</td>
-                                <td>jhon doe</td>
                                 <td>3.0</td>
                                 <td>BSIT</td>
                                 <td>
@@ -162,7 +158,6 @@
                                 <td>1</td>
                                 <td>IT-ELEC3</td>
                                 <td>BSIT ELECTIVE 3</td>
-                                <td>jhon doe</td>
                                 <td>3.0</td>
                                 <td>BSIT</td>
                                 <td>
