@@ -50,6 +50,9 @@
                 @yield('content-pages')
             </div>
         </div>
+        <div class="w-100">
+            @include('components.includes.footer')
+        </div>
 
           {{-- fontawesome --}}
           <script src="https://kit.fontawesome.com/9002f92f37.js" crossorigin="anonymous"></script>
