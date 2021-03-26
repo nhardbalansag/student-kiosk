@@ -2,7 +2,7 @@
 @section('content-pages')
     <div>
         <div class="d-flex justify-content-center">
-            <form action="">
+            <form action="{{ route('student-access.grades') }}">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Student number</label>
                     <input required type="text" class="form-control" id="exampleFormControlInput1" placeholder="student number">
@@ -44,7 +44,7 @@
                     </select>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-primary">
                 </div>
            </form>
         </div>

@@ -1,23 +1,22 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Student\StudentController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// student input information
+Route::get('/', [StudentController::class, 'index'])->name('index');
 
-Route::get('/', function () {
-    return view('components.contents.student-credentials');
+Route::group(['prefix'=>'student','as'=>'student-access.'], function() {
+
+    //student input grades
+    Route::get('input-grades', [StudentController::class, 'inputGrades'])->name('grades');
+
 });
 
+Route::group(['middleware' => 'auth'], function () {
+
+});
+
+// login, register, forgot password routes here
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
