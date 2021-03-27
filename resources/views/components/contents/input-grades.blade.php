@@ -4,18 +4,17 @@
         <div class="p-1 card card-default">
             <div class="card-header">
                 <h3 class="card-title">Available Subjects for (2021-00022-mn-9)</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
             </div>
-            <div class="p-2 card card-danger" >
+            <div class="p-2 card card-default" >
                 <div class="card-header">
-                    <h3 class="card-title">{{ env('APP_NAME') }}</h3>
+                    <div class="d-flex flex-column">
+                        <div>
+                            <p class="card-title">Bachelor of Science in Computer Science (BSCS)</p>
+                        </div>
+                        <div>
+                            <p class="card-title">Effective Academic Year 2013-2014</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
@@ -49,21 +48,16 @@
                           <table class="table table-bordered table-hover">
                             <thead>
                               <tr>
-                                <th>#</th>
+                                <th>Final Grade</th>
                                 <th>Subject Code</th>
                                 <th>Description</th>
                                 <th>Units</th>
                                 <th>Sect Code</th>
-                                <th>Final Grade</th>
+                                <th>Prereq</th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr data-widget="expandable-table" aria-expanded="false">
-                                <td>1</td>
-                                <td>IT-ELEC3</td>
-                                <td>BSIT ELECTIVE 3</td>
-                                <td>3.0</td>
-                                <td>BSIT</td>
                                 <td>
                                     <div class="form-group" data-select2-id="80">
                                         <select class="select2bs4 select2-hidden-accessible" multiple="" data-placeholder="Select Grade" style="width: 100%;"  tabindex="-1" aria-hidden="true">
@@ -89,108 +83,18 @@
                                         </select>
                                     </div>
                                 </td>
-                              </tr>
-                              <tr data-widget="expandable-table" aria-expanded="false">
-                                <td>1</td>
                                 <td>IT-ELEC3</td>
                                 <td>BSIT ELECTIVE 3</td>
                                 <td>3.0</td>
                                 <td>BSIT</td>
-                                <td>
-                                    <div class="form-group" data-select2-id="80">
-                                        <select class="select2bs4 select2-hidden-accessible" multiple="" data-placeholder="Select Grade" style="width: 100%;"  tabindex="-1" aria-hidden="true">
-                                            <option>1</option>
-                                            <option>1.25</option>
-                                            <option>1.50</option>
-                                            <option>1.75</option>
-                                            <option>2.00</option>
-                                            <option>2.25</option>
-                                            <option>2.50</option>
-                                            <option>2.75</option>
-                                            <option>3.00</option>
-                                            <option>3.25</option>
-                                            <option>3.50</option>
-                                            <option>3.75</option>
-                                            <option>4.00</option>
-                                            <option>4.25</option>
-                                            <option>4.50</option>
-                                            <option>4.75</option>
-                                            <option>5.00</option>
-                                            <option>W</option>
-                                            <option>D</option>
-                                        </select>
-                                    </div>
-                                </td>
-                              </tr>
-                              <tr data-widget="expandable-table" aria-expanded="false">
-                                <td>1</td>
-                                <td>IT-ELEC3</td>
-                                <td>BSIT ELECTIVE 3</td>
-                                <td>3.0</td>
-                                <td>BSIT</td>
-                                <td>
-                                    <div class="form-group" data-select2-id="80">
-                                        <select class="select2bs4 select2-hidden-accessible" multiple="" data-placeholder="Select Grade" style="width: 100%;"  tabindex="-1" aria-hidden="true">
-                                            <option>1</option>
-                                            <option>1.25</option>
-                                            <option>1.50</option>
-                                            <option>1.75</option>
-                                            <option>2.00</option>
-                                            <option>2.25</option>
-                                            <option>2.50</option>
-                                            <option>2.75</option>
-                                            <option>3.00</option>
-                                            <option>3.25</option>
-                                            <option>3.50</option>
-                                            <option>3.75</option>
-                                            <option>4.00</option>
-                                            <option>4.25</option>
-                                            <option>4.50</option>
-                                            <option>4.75</option>
-                                            <option>5.00</option>
-                                            <option>W</option>
-                                            <option>D</option>
-                                        </select>
-                                    </div>
-                                </td>
-                              </tr>
-                              <tr data-widget="expandable-table" aria-expanded="false">
-                                <td>1</td>
-                                <td>IT-ELEC3</td>
-                                <td>BSIT ELECTIVE 3</td>
-                                <td>3.0</td>
-                                <td>BSIT</td>
-                                <td>
-                                    <div class="form-group" data-select2-id="80">
-                                        <select class="select2bs4 select2-hidden-accessible" multiple="" data-placeholder="Select Grade" style="width: 100%;"  tabindex="-1" aria-hidden="true">
-                                            <option>1</option>
-                                            <option>1.25</option>
-                                            <option>1.50</option>
-                                            <option>1.75</option>
-                                            <option>2.00</option>
-                                            <option>2.25</option>
-                                            <option>2.50</option>
-                                            <option>2.75</option>
-                                            <option>3.00</option>
-                                            <option>3.25</option>
-                                            <option>3.50</option>
-                                            <option>3.75</option>
-                                            <option>4.00</option>
-                                            <option>4.25</option>
-                                            <option>4.50</option>
-                                            <option>4.75</option>
-                                            <option>5.00</option>
-                                            <option>W</option>
-                                            <option>D</option>
-                                        </select>
-                                    </div>
-                                </td>
+                                <td>English</td>
                               </tr>
                             </tbody>
                           </table>
                         </div>
                         <div class="card-body">
                             <button type="button" class="btn btn-primary">Check Status</button>
+                            <button type="button" class="btn btn-danger">Reset</button>
                         </div>
                       </div>
                     </div>

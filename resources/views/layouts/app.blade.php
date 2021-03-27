@@ -9,8 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -26,8 +25,6 @@
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- IonIcons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <!-- daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- iCheck for checkboxes and radio inputs -->
@@ -48,6 +45,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     {{-- admin lte end --}}
+    <script src="{{ asset('js/app.js') }}"></script>
     @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini">
@@ -56,6 +54,8 @@
             @yield('content')
         </main>
     </div>
+
+    @livewireScripts
     {{-- fontawesome --}}
         <script src="https://kit.fontawesome.com/9002f92f37.js" crossorigin="anonymous"></script>
     {{-- end fontawesome --}}
@@ -94,10 +94,10 @@
     <!-- dropzonejs -->
     <script src="{{ asset('plugins/dropzone/min/dropzone.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+    {{-- <script src="{{ asset('dist/js/adminlte.min.js') }}"></script> --}}
     <!-- Page specific script -->
     {{-- end admin lte scripts --}}
-    @livewireScripts
+
 </body>
 </html>
 
