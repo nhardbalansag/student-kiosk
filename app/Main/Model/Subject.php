@@ -4,13 +4,21 @@ namespace App\Main\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Curriculum extends Model
+class Subject extends Model
 {
     protected $fillable = [
-        'year_start_curiculum',
-        'year_end_curiculum',
-        'tittle',
+        'title',
         'description',
+        'total_units',
+        'lecture_units',
+        'lab_units',
+        'subject_id',
         'status'
     ];
 }
+
+
+
+
+
+

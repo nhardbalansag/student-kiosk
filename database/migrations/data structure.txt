@@ -21,16 +21,8 @@ course
     - status
 
 semester
-    - title 
+    - title
     - description
-
-course and year
-    - curriculum title
-    - curriculum description
-    - status
-    - course_id
-    - year_id
-    - curriculum_id
 
 subject
     - title
@@ -39,8 +31,22 @@ subject
     - total units
     - lecture units
     - lab units
-    - pre requisite
-    - course_and_year_id
+    - pre_requisite_subject_id
+
+curiculum_courses
+    - curriculum title
+    - curriculum description
+    - status
+    - course_id
+    - year_id
+    - semester_id
+    - curriculum_id
+
+curriculum_output_subject
+    - curiculum_courses
+    - subject_id
+
+
 
 
 
