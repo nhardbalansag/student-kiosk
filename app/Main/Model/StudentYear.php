@@ -4,12 +4,10 @@ namespace App\Main\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Curriculum extends Model
+class StudentYear extends Model
 {
     protected $fillable = [
-        'year_start_curiculum',
-        'year_end_curiculum',
-        'tittle',
+        'year_title',
         'description',
         'status'
     ];
