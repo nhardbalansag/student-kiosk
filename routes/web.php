@@ -8,6 +8,8 @@ Route::get('/', [StudentController::class, 'index'])->name('index');
 
 Route::group(['prefix'=>'student','as'=>'student-access.'], function() {
 
+    //student input curriculum
+    Route::get('input-curriculum', [StudentController::class, 'inputCurriculum'])->name('curriculum');
     //student input grades
     Route::get('input-grades', [StudentController::class, 'inputGrades'])->name('grades');
 

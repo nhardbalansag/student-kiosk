@@ -7,7 +7,15 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    // public function index(){
+    //     return view('components.contents.student-credentials');
+    // }
+
     public function index(){
+        return view('components.contents.start');
+    }
+
+    public function inputCurriculum(){
         return view('components.contents.student-credentials');
     }
 
