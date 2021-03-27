@@ -37,20 +37,39 @@
      <link href="{{ asset('css/welcome_custom.css') }}" rel="stylesheet">
      <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    @livewireStyles
     </head>
-    <body>
+    <body >
         <div>
-            <!-- As a link -->
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar" style="background-color:rgb(82, 86, 89)">
                 <div class="container container-fluid">
-                    <a class="navbar-brand" href="/">{{ env('APP_NAME') }}</a>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <a class="navbar-brand " href="/">
+                                <img width="150" height="150" src="{{ asset('image/University_of_San_Agustin_Logo.png') }}" alt="">
+                            </a>
+                        </div>
+                        <div class="row col-md-12">
+                            <div class="col-md-4">
+                                <h4 class="text-white font-weight-bold ">
+                                    {{ env('APP_NAME') }}
+                                </h4>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="text-white">
+                                    to use: Click START, then  select curriculum, afterwards select grades from dropdown in each subject.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </nav>
-            <div class="container mt-5">
-                @yield('content-pages')
-            </div>
         </div>
-        <div class="w-100">
+        <div class="container mt-5" style="height: 100vh">
+            @yield('content-pages')
+        </div>
+        <div>
             @include('components.includes.footer')
         </div>
 
@@ -86,7 +105,7 @@
           <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
           <!-- Page specific script -->
           {{-- end admin lte scripts --}}
-
+          @livewireScripts
           @stack('student-pages-scripts')
     </body>
 </html>

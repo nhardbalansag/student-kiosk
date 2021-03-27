@@ -48,6 +48,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     {{-- admin lte end --}}
+    @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini">
     <div id="app">
@@ -96,7 +97,7 @@
     <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
     <!-- Page specific script -->
     {{-- end admin lte scripts --}}
-
+    @livewireScripts
 </body>
 </html>
 
