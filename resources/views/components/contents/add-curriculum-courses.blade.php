@@ -32,7 +32,7 @@
                                 <option value ="{{ null }}">Open this select menu</option>
                                 @if(count($course) !== 0)
                                     @forelse($course as $index)
-                                        <option value = "{{$index->id}}" >{{$index->title}}</option>
+                                        <option value = "{{$index->id}}" >{{$index->course_title}}</option>
                                     @empty
                                     @endforelse
                                 @endif
@@ -44,7 +44,7 @@
                                 <option value ="{{ null }}">Open this select menu</option>
                                 @if(count($year) !== 0)
                                     @forelse($year as $index)
-                                        <option value = "{{$index->id}}" >{{$index->title}}</option>
+                                        <option value = "{{$index->id}}" >{{$index->year_title}}</option>
                                     @empty
                                     @endforelse
                                 @endif
