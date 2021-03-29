@@ -28,8 +28,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Select Course</label>
-                            <select name="course_id" required class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
+                            <select name="course_id"  class="form-select" aria-label="Default select example">
+                                <option value ="{{ null }}">Open this select menu</option>
                                 @forelse($course as $index)
                                     <option value = "{{$index->id}}" >{{$index->title}}</option>
                                 @empty
@@ -38,8 +38,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Select Year</label>
-                            <select name="year_id" required class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
+                            <select name="year_id"  class="form-select" aria-label="Default select example">
+                                <option value ="{{ null }}">Open this select menu</option>
                                 @forelse($year as $index)
                                     <option value = "{{$index->id}}" >{{$index->title}}</option>
                                 @empty
@@ -48,8 +48,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Select Semester</label>
-                            <select name="semester_id" required class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
+                            <select name="semester_id"  class="form-select" aria-label="Default select example">
+                                <option value ="{{ null }}">Open this select menu</option>
                                 @forelse($semester as $index)
                                     <option value = "{{$index->id}}" >{{$index->title}}</option>
                                 @empty
@@ -58,8 +58,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Select Curriculum</label>
-                            <select name="curriculum_id" required class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
+                            <select name="curriculum_id"  class="form-select" aria-label="Default select example">
+                                <option value ="{{ null }}">Open this select menu</option>
                                 @forelse($curriculum as $index)
                                     <option value = "{{$index->id}}" >{{$index->title}}</option>
                                 @empty
@@ -68,8 +68,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Status</label>
-                            <select name="status" required class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
+                            <select name="status"  class="form-select" aria-label="Default select example">
+                                <option >Open this select menu</option>
                                 <option value="active">Set Active</option>
                                 <option value="pending">Set Pending</option>
                             </select>

@@ -42,8 +42,8 @@
                         @if(count($subjectList) !== 0)
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Prerequisite Subject</label>
-                            <select name="subject_id" required class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
+                            <select name="subject_id" class="form-select" aria-label="Default select example">
+                                <option value ="{{ null }}">Open this select menu</option>
                                 @forelse($subjectList as $index)
                                     <option value = "{{$index->id}}" >{{$index->title}}</option>
                                 @empty
@@ -55,7 +55,7 @@
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Status</label>
                             <select name="status" required class="form-select" aria-label="Default select example">
-                                <option selected>Open this select menu</option>
+                                <option >Open this select menu</option>
                                 <option value="active">Set Active</option>
                                 <option value="pending">Set Pending</option>
                             </select>
