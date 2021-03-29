@@ -30,40 +30,50 @@
                             <label for="exampleFormControlInput1" class="form-label">Select Course</label>
                             <select name="course_id"  class="form-select" aria-label="Default select example">
                                 <option value ="{{ null }}">Open this select menu</option>
-                                @forelse($course as $index)
-                                    <option value = "{{$index->id}}" >{{$index->title}}</option>
-                                @empty
-                                @endforelse
+                                @if(count($course) !== 0)
+                                    @forelse($course as $index)
+                                        <option value = "{{$index->id}}" >{{$index->title}}</option>
+                                    @empty
+                                    @endforelse
+                                @endif
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Select Year</label>
                             <select name="year_id"  class="form-select" aria-label="Default select example">
                                 <option value ="{{ null }}">Open this select menu</option>
-                                @forelse($year as $index)
-                                    <option value = "{{$index->id}}" >{{$index->title}}</option>
-                                @empty
-                                @endforelse
+                                @if(count($year) !== 0)
+                                    @forelse($year as $index)
+                                        <option value = "{{$index->id}}" >{{$index->title}}</option>
+                                    @empty
+                                    @endforelse
+                                @endif
+                               
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Select Semester</label>
                             <select name="semester_id"  class="form-select" aria-label="Default select example">
                                 <option value ="{{ null }}">Open this select menu</option>
-                                @forelse($semester as $index)
-                                    <option value = "{{$index->id}}" >{{$index->title}}</option>
-                                @empty
-                                @endforelse
+                                @if(count($semester) !== 0)
+                                    @forelse($semester as $index)
+                                        <option value = "{{$index->id}}" >{{$index->title}}</option>
+                                    @empty
+                                    @endforelse
+                                @endif
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Select Curriculum</label>
                             <select name="curriculum_id"  class="form-select" aria-label="Default select example">
                                 <option value ="{{ null }}">Open this select menu</option>
-                                @forelse($curriculum as $index)
-                                    <option value = "{{$index->id}}" >{{$index->title}}</option>
-                                @empty
-                                @endforelse
+                                @if(count($curriculum) !== 0)
+                                    @forelse($curriculum as $index)
+                                        <option value = "{{$index->id}}" >{{$index->title}}</option>
+                                    @empty
+                                    @endforelse
+                                @endif
+                                
                             </select>
                         </div>
                         <div class="mb-3">
