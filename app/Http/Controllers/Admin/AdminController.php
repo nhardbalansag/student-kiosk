@@ -80,6 +80,7 @@ class AdminController extends Controller
 
         $rules = [
             'course_title' => ['required', 'string', 'max:255'],
+            'course_code' => ['required', 'string', 'max:255'],
             'course_description' => ['required', 'string', 'max:255'],
             'status' => ['required', 'string', 'max:255']
         ];

@@ -29,6 +29,7 @@ class QueryBuilder extends Model
     public static function createCourse($request){
         Course::create([
             'course_title' => $request['course_title'],
+            'course_code' => $request['course_code'],
             'course_description' => $request['course_description'],
             'status' => $request['status']
         ]);
