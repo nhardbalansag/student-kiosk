@@ -46,6 +46,14 @@ class QueryBuilder extends Model
         ]);
     }
 
+    public static function createSemester($request){
+        Semester::create([
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'status' => $request['status']
+        ]);
+    }
+
     public static function createCurriculumCourses($request){
         CurriculumCourses::create([
             'title' => $request['title'],
