@@ -37,7 +37,9 @@
                     (Request::route()->getName() === "admin.add-year-level" ? 'menu-open' : 
                     (Request::route()->getName() === "admin.add-course" ? 'menu-open' : 
                     (Request::route()->getName() === "admin.add-semester" ? 'menu-open' : 
-                    (Request::route()->getName() === "admin.add-subject" ? 'menu-open' : ''))))
+                    (Request::route()->getName() === "admin.add-subject" ? 'menu-open' : 
+                    (Request::route()->getName() === "admin.add-curriculum-courses" ? 'menu-open' : 
+                    (Request::route()->getName() === "admin.add-curriculum-subject" ? 'menu-open' : ''))))))
                 }}"
             >
             <a href="#" class="nav-link 
@@ -46,7 +48,9 @@
                     (Request::route()->getName() === "admin.add-year-level" ? 'menu-open active' : 
                     (Request::route()->getName() === "admin.add-course" ? 'menu-open active' : 
                     (Request::route()->getName() === "admin.add-semester" ? 'menu-open active' : 
-                    (Request::route()->getName() === "admin.add-subject" ? 'menu-open active' : ''))))
+                    (Request::route()->getName() === "admin.add-subject" ? 'menu-open active' : 
+                    (Request::route()->getName() === "admin.add-curriculum-courses" ? 'menu-open active' : 
+                    (Request::route()->getName() === "admin.add-curriculum-subject" ? 'menu-open active' : ''))))))
                 }}"
             >
               <i class="nav-icon fas fa-edit"></i>
@@ -87,13 +91,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.add-curriculum-courses') }}" class="nav-link {{ Request::route()->getName() === "admin.add-curriculum-courses" ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Curriculum Courses</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.add-curriculum-subject') }}" class="nav-link {{ Request::route()->getName() === "admin.add-curriculum-subject" ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Curriculum Subjects</p>
                 </a>
