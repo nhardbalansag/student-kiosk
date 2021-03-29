@@ -3,7 +3,7 @@
 namespace App\Main\Query;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Main\Model\{Curriculum, StudentYear, Course, Semester, Subject};
+use App\Main\Model\{Curriculum, StudentYear, Course, Semester, Subject, CurriculumCourses};
 use Illuminate\Support\Facades\{Validator, DB};
 
 class QueryBuilder extends Model
@@ -41,6 +41,26 @@ class QueryBuilder extends Model
             'total_units' => $request['total_units'],
             'lecture_units' => $request['lecture_units'],
             'lab_units' => $request['lab_units'],
+            'subject_id' => $request['subject_id'],
+            'status' => $request['status']
+        ]);
+    }
+
+    public static function createCurriculumCourses($request){
+        CurriculumCourses::create([
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'status' => $request['status'],
+            'course_id' => $request['course_id'],
+            'year_id' => $request['year_id'],
+            'semester_id' => $request['semester_id'],
+            'curriculum_id' => $request['curriculum_id']
+        ]);
+    }
+
+    public static function createCurriculumSubject($request){
+        CurriculumCourses::create([
+            'curiculum_courses_id' => $request['curiculum_courses_id'],
             'subject_id' => $request['subject_id'],
             'status' => $request['status']
         ]);
