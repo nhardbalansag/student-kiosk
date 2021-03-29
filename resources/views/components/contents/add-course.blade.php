@@ -23,6 +23,10 @@
                             <input name="course_title" type="text" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputPassword1">Course Code</label>
+                            <input name="course_code" type="text" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputPassword1">Description</label>
                             <input name="course_description" type="text" class="form-control" id="exampleInputPassword1">
                         </div>
