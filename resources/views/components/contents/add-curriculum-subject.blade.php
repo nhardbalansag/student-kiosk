@@ -22,10 +22,13 @@
                             <label for="exampleFormControlInput1" class="form-label">Select Curriculum Courses</label>
                             <select name="curiculum_courses_id"  class="form-select" aria-label="Default select example">
                                 <option value ="{{ null }}">Open this select menu</option>
-                                @forelse($curriculumCourses as $index)
-                                    <option value = "{{$index->id}}" >{{$index->title}}</option>
-                                @empty
-                                @endforelse
+                                @if(count($curriculumCourses) !== 0)
+                                    @forelse($curriculumCourses as $index)
+                                        <option value = "{{$index->id}}" >{{$index->title}}</option>
+                                    @empty
+                                    @endforelse
+                                @endif
+
                             </select>
                         </div>
                         <div class="mb-3">
