@@ -38,6 +38,7 @@ class QueryBuilder extends Model
     public static function createSubject($request){
         Subject::create([
             'title' => $request['title'],
+            'subject_code' => $request['subject_code'],
             'description' => $request['description'],
             'total_units' => $request['total_units'],
             'lecture_units' => $request['lecture_units'],
