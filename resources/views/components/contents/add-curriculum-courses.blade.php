@@ -69,7 +69,7 @@
                                 <option value ="{{ null }}">Open this select menu</option>
                                 @if(count($curriculum) !== 0)
                                     @forelse($curriculum as $index)
-                                        <option value = "{{$index->id}}" >{{$index->title}}</option>
+                                        <option value = "{{$index->id}}" >{{$index->tittle}}</option>
                                     @empty
                                     @endforelse
                                 @endif
