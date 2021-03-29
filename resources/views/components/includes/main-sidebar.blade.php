@@ -31,8 +31,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item {{ Request::route()->getName() === "admin.add-curriculum" ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Request::route()->getName() === "admin.add-curriculum" ? 'active' : '' }}">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Forms
@@ -41,7 +41,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.add-curriculum') }}" class="nav-link {{ Request::route()->getName() === "admin.add-curriculum" ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Curriculum</p>
                 </a>
