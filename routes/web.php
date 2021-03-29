@@ -21,6 +21,14 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('add-curriculum', [AdminController::class, 'view_add_curriculum'])->name('add-curriculum');
         Route::post('submit-curriculum', [AdminController::class, 'submit_curriculum'])->name('submit-curriculum');
+        Route::get('add-year-level', [AdminController::class, 'view_add_year_level_curriculum'])->name('add-year-level');
+        Route::post('submit-year-level', [AdminController::class, 'submit_year_level'])->name('submit-year-level');
+        Route::get('add-course', [AdminController::class, 'view_add_course'])->name('add-course');
+        Route::post('submit-course', [AdminController::class, 'submit_course'])->name('submit-course');
+        Route::get('add-semester', [AdminController::class, 'view_add_semester'])->name('add-semester');
+        Route::post('submit-semester', [AdminController::class, 'submit_semester'])->name('submit-semester');
+        Route::get('add-subject', [AdminController::class, 'view_add_subject'])->name('add-subject');
+        Route::post('submit-subject', [AdminController::class, 'submit_subject'])->name('submit-subject');
 
     });
 });

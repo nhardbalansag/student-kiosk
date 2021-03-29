@@ -31,8 +31,24 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item {{ Request::route()->getName() === "admin.add-curriculum" ? 'menu-open' : '' }}">
-            <a href="#" class="nav-link {{ Request::route()->getName() === "admin.add-curriculum" ? 'active' : '' }}">
+            <li class="nav-item 
+                {{ 
+                    Request::route()->getName() === "admin.add-curriculum" ? 'menu-open' : 
+                    (Request::route()->getName() === "admin.add-year-level" ? 'menu-open' : 
+                    (Request::route()->getName() === "admin.add-course" ? 'menu-open' : 
+                    (Request::route()->getName() === "admin.add-semester" ? 'menu-open' : 
+                    (Request::route()->getName() === "admin.add-subject" ? 'menu-open' : ''))))
+                }}"
+            >
+            <a href="#" class="nav-link 
+                {{ 
+                    Request::route()->getName() === "admin.add-curriculum" ? 'menu-open active' : 
+                    (Request::route()->getName() === "admin.add-year-level" ? 'menu-open active' : 
+                    (Request::route()->getName() === "admin.add-course" ? 'menu-open active' : 
+                    (Request::route()->getName() === "admin.add-semester" ? 'menu-open active' : 
+                    (Request::route()->getName() === "admin.add-subject" ? 'menu-open active' : ''))))
+                }}"
+            >
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Forms
@@ -47,25 +63,25 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.add-year-level') }}" class="nav-link {{ Request::route()->getName() === "admin.add-year-level" ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Year Level</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.add-course') }}" class="nav-link {{ Request::route()->getName() === "admin.add-course" ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Course</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.add-semester') }}" class="nav-link {{ Request::route()->getName() === "admin.add-semester" ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Semester</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.add-subject') }}" class="nav-link {{ Request::route()->getName() === "admin.add-subject" ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Subject</p>
                 </a>
