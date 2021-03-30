@@ -185,7 +185,7 @@ class AdminController extends Controller
         $rules = [
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
-            'status' => ['required', 'numeric'],
+            'status' => ['required', 'string'],
             'course_id' => ['required', 'numeric'],
             'year_id' => ['required', 'numeric'],
             'semester_id' => ['required', 'numeric'],
