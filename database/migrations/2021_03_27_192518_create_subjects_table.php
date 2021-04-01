@@ -21,12 +21,6 @@ class CreateSubjectsTable extends Migration
             $table->integer('total_units');
             $table->integer('lecture_units');
             $table->integer('lab_units');
-            $table->integer('subject_id')->unsigned()->nullable();
-            $table->foreign('subject_id')
-            ->references('id')
-            ->on('subjects')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
             $table->string('status');
             $table->timestamps();
         });

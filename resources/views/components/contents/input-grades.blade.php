@@ -90,7 +90,7 @@
                                         <td>{{ $value->subject_lecture_units }}</td>
                                         <td>{{ $value->subject_lab_units }}</td>
                                         <td>{{ $value->subject_total_units }}</td>
-                                        <td>English</td>
+                                        <td>{{ $value->prerequisites_subject_code }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
