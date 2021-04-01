@@ -3,16 +3,16 @@
     <div>
         <div class="p-1 card card-default">
             <div class="card-header">
-                <h3 class="card-title">Available Subjects for (2021-00022-mn-9)</h3>
+                <h3 class="card-title">Available Subjects for ({{ $student_number }})</h3>
             </div>
             <div class="p-2 card card-default" >
                 <div class="card-header">
                     <div class="d-flex flex-column">
                         <div>
-                            <p class="card-title">Bachelor of Science in Computer Science (BSCS)</p>
+                            <p class="card-title">{{ $info->course_title }} ({{ $info->course_code }})</p>
                         </div>
                         <div>
-                            <p class="card-title">Effective Academic Year 2013-2014</p>
+                            <p class="card-title">Effective Academic {{ $info->course_curriculum_title }}</p>
                         </div>
                     </div>
                 </div>
@@ -23,23 +23,23 @@
                             <div class="row col-12 col-md-12">
                                 <div class="col-12 col-md-3">
                                     <span class="font-weight-bold">Student Number</span>
-                                    <p class="font-weight-light">2021-00022-mn-9</p>
+                                    <p class="font-weight-light">{{ $student_number }}</p>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <span class="font-weight-bold">Curriculum</span>
-                                    <p class="font-weight-light">2020-2021</p>
+                                    <p class="font-weight-light">{{ $info->course_curriculum_title }}</p>
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <span class="font-weight-bold">Year</span>
-                                    <p class="font-weight-light">4th</p>
+                                    <p class="font-weight-light">{{ $info->student_years_title }}</p>
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <span class="font-weight-bold">Course</span>
-                                    <p class="font-weight-light">BSIT</p>
+                                    <p class="font-weight-light">{{ $info->course_code }}</p>
                                 </div>
                                 <div class="col-12 col-md-2">
                                     <span class="font-weight-bold">Semester</span>
-                                    <p class="font-weight-light">2nd</p>
+                                    <p class="font-weight-light">{{ $info->semesters_title }}</p>
                                 </div>
                             </div>
                         </div>
@@ -51,44 +51,48 @@
                                 <th>Final Grade</th>
                                 <th>Subject Code</th>
                                 <th>Description</th>
+                                <th>Lec</th>
+                                <th>Lab</th>
                                 <th>Units</th>
-                                <th>Sect Code</th>
                                 <th>Prereq</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr data-widget="expandable-table" aria-expanded="false">
-                                <td>
-                                    <div class="form-group" data-select2-id="80">
-                                        <select class="select2bs4 select2-hidden-accessible" multiple="" data-placeholder="Select Grade" style="width: 100%;"  tabindex="-1" aria-hidden="true">
-                                            <option>1</option>
-                                            <option>1.25</option>
-                                            <option>1.50</option>
-                                            <option>1.75</option>
-                                            <option>2.00</option>
-                                            <option>2.25</option>
-                                            <option>2.50</option>
-                                            <option>2.75</option>
-                                            <option>3.00</option>
-                                            <option>3.25</option>
-                                            <option>3.50</option>
-                                            <option>3.75</option>
-                                            <option>4.00</option>
-                                            <option>4.25</option>
-                                            <option>4.50</option>
-                                            <option>4.75</option>
-                                            <option>5.00</option>
-                                            <option>W</option>
-                                            <option>D</option>
-                                        </select>
-                                    </div>
-                                </td>
-                                <td>IT-ELEC3</td>
-                                <td>BSIT ELECTIVE 3</td>
-                                <td>3.0</td>
-                                <td>BSIT</td>
-                                <td>English</td>
-                              </tr>
+                                @foreach($subjects as $key => $value)
+                                    <tr data-widget="expandable-table" aria-expanded="true">
+                                        <td>
+                                            <div class="form-group" data-select2-id="80">
+                                                <select class="select2bs4 select2-hidden-accessible" multiple="" data-placeholder="Select Grade" style="width: 100%;"  tabindex="-1" aria-hidden="true">
+                                                    <option>1</option>
+                                                    <option>1.25</option>
+                                                    <option>1.50</option>
+                                                    <option>1.75</option>
+                                                    <option>2.00</option>
+                                                    <option>2.25</option>
+                                                    <option>2.50</option>
+                                                    <option>2.75</option>
+                                                    <option>3.00</option>
+                                                    <option>3.25</option>
+                                                    <option>3.50</option>
+                                                    <option>3.75</option>
+                                                    <option>4.00</option>
+                                                    <option>4.25</option>
+                                                    <option>4.50</option>
+                                                    <option>4.75</option>
+                                                    <option>5.00</option>
+                                                    <option>W</option>
+                                                    <option>D</option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>{{ $value->subject_subject_code }}</td>
+                                        <td>{{ $value->subject_title }}</td>
+                                        <td>{{ $value->subject_lecture_units }}</td>
+                                        <td>{{ $value->subject_lab_units }}</td>
+                                        <td>{{ $value->subject_total_units }}</td>
+                                        <td>English</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                           </table>
                         </div>
