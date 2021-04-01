@@ -8,7 +8,6 @@ class CurriculumCourses extends Model
 {
     protected $fillable = [
         'title',
-        'description',
         'status',
         'course_id',
         'year_id',

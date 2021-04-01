@@ -16,7 +16,6 @@ class CreateCurriculumCoursesTable extends Migration
         Schema::create('curriculum_courses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('description');
             $table->string('status');
             //courses
             $table->integer('course_id')->unsigned();
@@ -60,4 +59,5 @@ class CreateCurriculumCoursesTable extends Migration
         Schema::dropIfExists('curriculum_courses');
     }
 }
+
 
