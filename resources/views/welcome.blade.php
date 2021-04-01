@@ -66,7 +66,7 @@
                 </div>
             </nav>
         </div>
-        <div class="container mt-5" style="height: 100vh">
+        <div class="container mt-5" style="height: {{ Request::route()->getName() !== 'student-access.grades' ? '100vh' : ''}}">
             @yield('content-pages')
         </div>
         <div>
