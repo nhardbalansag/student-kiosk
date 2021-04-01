@@ -56,10 +56,9 @@ class QueryBuilder extends Model
         ]);
     }
 
-    public static function createCurriculumCourses($request){
+    public static function createCurriculumCourses($request, $title){
         CurriculumCourses::create([
-            'title' => $request['title'],
-            'description' => $request['description'],
+            'title' => $title,
             'status' => $request['status'],
             'course_id' => $request['course_id'],
             'year_id' => $request['year_id'],
@@ -80,6 +79,25 @@ class QueryBuilder extends Model
         $data = DB::table($colection)
                 ->where('status', $filter)
                 ->get();
+
+        return $data;
+    }
+
+    public static function getCourseData(){
+        $data = DB::table('curriculum_courses')
+                ->join('courses', 'curriculum_courses.course_id', '=', 'courses.id')
+                ->where('curriculum_courses.status', 'active')
+                ->select('curriculum_courses.*', 'courses.course_title as course_title')
+                ->get();
+
+        return $data;
+    }
+
+    public static function getFirst($collection, $to_filter, $filter){
+        $data = DB::table($collection)
+                ->where($to_filter, $filter)
+                ->where('status', 'active')
+                ->first();
 
         return $data;
     }

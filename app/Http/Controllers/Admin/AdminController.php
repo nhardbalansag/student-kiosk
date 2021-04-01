@@ -136,7 +136,7 @@ class AdminController extends Controller
     public function view_add_subject(){
 
         $data['subjectList'] = QueryBuilder::getAllData('subjects', 'active');
-        
+
         return view('components.contents.add-subject', $data);
     }
 
@@ -183,8 +183,6 @@ class AdminController extends Controller
     public function submit_curriculum_courses(Request $request){
 
         $rules = [
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
             'status' => ['required', 'string'],
             'course_id' => ['required', 'numeric'],
             'year_id' => ['required', 'numeric'],
@@ -202,7 +200,15 @@ class AdminController extends Controller
 
             unset($request['_token']);
 
-            if(!QueryBuilder::createCurriculumCourses($request)){
+            $data['courseData'] = QueryBuilder::getFirst('courses', 'id', $request['course_id']);//course
+            $data['yearData'] = QueryBuilder::getFirst('student_years', 'id', $request['year_id']);// year
+            $data['semesterData'] = QueryBuilder::getFirst('semesters', 'id', $request['semester_id']);// semester
+            $data['curriculumData'] = QueryBuilder::getFirst('curricula', 'id', $request['curriculum_id']);// curriculum
+
+            // 2nd year BSIT, 1st Semester, SY 2017-2018
+            $title =  $data['yearData']->year_title . " " .  $data['courseData']->course_title . ", " . $data['semesterData']->title . ", " . $data['curriculumData']->tittle;
+
+            if(!QueryBuilder::createCurriculumCourses($request, $title)){
                 return redirect()->back()->with('message', 'Data successfully added');
             }else{
                 return redirect()->back()->with('error', 'Error adding data');
@@ -212,7 +218,7 @@ class AdminController extends Controller
 
     public function view_add_curriculum_subject(){
 
-        $data['curriculumCourses'] = QueryBuilder::getAllData('curriculum_courses', 'active');
+        $data['curriculumCourses'] = QueryBuilder::getCourseData();
         $data['subject'] = QueryBuilder::getAllData('subjects', 'active');
 
         return view('components.contents.add-curriculum-subject', $data);

@@ -18,14 +18,6 @@
                 <form action={{ route('admin.submit-curriculum-courses') }} method="post">
                     @csrf
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Title</label>
-                            <input name="title" type="text" class="form-control" >
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Description</label>
-                            <input name="description" type="text" class="form-control" >
-                        </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Select Course</label>
                             <select name="course_id"  class="form-select" aria-label="Default select example">
@@ -48,7 +40,7 @@
                                     @empty
                                     @endforelse
                                 @endif
-                               
+
                             </select>
                         </div>
                         <div class="mb-3">
@@ -73,7 +65,7 @@
                                     @empty
                                     @endforelse
                                 @endif
-                                
+
                             </select>
                         </div>
                         <div class="mb-3">
