@@ -3,7 +3,7 @@
 namespace App\Main\Query;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Main\Model\{Curriculum, StudentYear, Course, Semester, Subject, CurriculumCourses, CurriculumSubject};
+use App\Main\Model\{Curriculum, StudentYear, Course, Semester, Subject, CurriculumCourses, CurriculumSubject, Prerequisites};
 use Illuminate\Support\Facades\{Validator, DB};
 
 class QueryBuilder extends Model
@@ -43,8 +43,15 @@ class QueryBuilder extends Model
             'total_units' => $request['total_units'],
             'lecture_units' => $request['lecture_units'],
             'lab_units' => $request['lab_units'],
-            'subject_id' => $request['subject_id'],
             'status' => $request['status']
+        ]);
+    }
+
+    public static function createPrerequisites($request){
+        Prerequisites::create([
+            'prerequisites_title' => $request['prerequisites_title'],
+            'prerequisites_subject_code' => $request['prerequisites_subject_code'],
+            'prerequisites_subject_id' => $request['prerequisites_subject_id'],
         ]);
     }
 
@@ -107,6 +114,7 @@ class QueryBuilder extends Model
         $data = DB::table('curriculum_subjects')
                 ->join('curriculum_courses', 'curriculum_courses.id', '=', 'curriculum_subjects.curiculum_courses_id')
                 ->join('subjects', 'subjects.id', '=', 'curriculum_subjects.subject_id')
+                ->join('prerequisites', 'subjects.id', '=', 'prerequisites.prerequisites_subject_id')
                 ->join('courses', 'curriculum_courses.course_id', '=', 'courses.id')
                 ->join('curricula', 'curriculum_courses.curriculum_id', '=', 'curricula.id')
                 ->join('student_years', 'curriculum_courses.year_id', '=', 'student_years.id')
@@ -117,6 +125,7 @@ class QueryBuilder extends Model
                     'curriculum_courses.id as curriculum_courses_id',
                     'subjects.id as subject_id',
                     'subjects.title as subject_title',
+                    'prerequisites.prerequisites_subject_code as prerequisites_subject_code',
                     'subjects.subject_code as subject_subject_code',
                     'subjects.total_units as subject_total_units',
                     'subjects.lecture_units as subject_lecture_units',
@@ -126,20 +135,6 @@ class QueryBuilder extends Model
                     'curricula.tittle as course_curriculum_title',
                     'student_years.year_title as student_years_title',
                     'semesters.title as semesters_title',
-                )
-                ->groupBy(
-                    'curriculum_courses_id',
-                    'subject_id',
-                    'subject_title',
-                    'subject_subject_code',
-                    'subject_total_units',
-                    'subject_lecture_units',
-                    'subject_lab_units',
-                    'course_title',
-                    'course_code',
-                    'course_curriculum_title',
-                    'student_years_title',
-                    'semesters_title'
                 )
                 ->get();
 

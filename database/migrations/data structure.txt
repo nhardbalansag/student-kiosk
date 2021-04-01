@@ -33,6 +33,9 @@ subject
     - lab units
     - pre_requisite_subject_id
 
+pre_requisite
+    - subject_id
+
 curiculum_courses
     - curriculum title
     - curriculum description

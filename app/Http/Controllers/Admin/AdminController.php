@@ -162,6 +162,19 @@ class AdminController extends Controller
 
             unset($request['_token']);
 
+            if($request['subject_id'] !== null){
+
+                $dataPre = QueryBuilder::getFirst('subjects', 'id', $request['subject_id']);
+
+                $insert = [
+                    'prerequisites_title' =>  $dataPre->title,
+                    'prerequisites_subject_code' => $dataPre->subject_code,
+                    'prerequisites_subject_id' => $dataPre->id
+                ];
+
+                QueryBuilder::createPrerequisites($insert);
+            }
+
             if(!QueryBuilder::createSubject($request)){
                 return redirect()->back()->with('message', 'Data successfully added');
             }else{
