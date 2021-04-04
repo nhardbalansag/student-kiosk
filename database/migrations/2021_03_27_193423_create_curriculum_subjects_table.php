@@ -29,6 +29,13 @@ class CreateCurriculumSubjectsTable extends Migration
             ->on('subjects')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+            //pre subjects
+            $table->integer('pre_subject_id')->unsigned()->nullable();
+            $table->foreign('pre_subject_id')
+            ->references('id')
+            ->on('subjects')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->string('status');
             $table->timestamps();
         });

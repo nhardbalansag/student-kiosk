@@ -58,8 +58,8 @@
                               </tr>
                             </thead>
                             <tbody>
-                                @foreach($subjects as $key => $value)
-                                    <tr data-widget="expandable-table" aria-expanded="true">
+                                @for($index = 0; $index < count($pre['data']); $index++)
+                                    <tr  aria-expanded="true">
                                         <td>
                                             <div class="form-group" data-select2-id="80">
                                                 <select class="select2bs4 select2-hidden-accessible" multiple="" data-placeholder="Select Grade" style="width: 100%;"  tabindex="-1" aria-hidden="true">
@@ -85,14 +85,14 @@
                                                 </select>
                                             </div>
                                         </td>
-                                        <td>{{ $value->subject_subject_code }}</td>
-                                        <td>{{ $value->subject_title }}</td>
-                                        <td>{{ $value->subject_lecture_units }}</td>
-                                        <td>{{ $value->subject_lab_units }}</td>
-                                        <td>{{ $value->subject_total_units }}</td>
-                                        <td>{{ $value->prerequisites_subject_code }}</td>
+                                        <td>{{ $pre['data'][$index]['subject']['subject_subject_code'] }}</td>
+                                        <td>{{ $pre['data'][$index]['subject']['subject_title'] }}</td>
+                                        <td>{{ $pre['data'][$index]['subject']['subject_lecture_units'] }}</td>
+                                        <td>{{ $pre['data'][$index]['subject']['subject_lab_units'] }}</td>
+                                        <td>{{ $pre['data'][$index]['subject']['subject_total_units'] }}</td>
+                                        <td>{{ $pre['data'][$index]['pre']['pre_subj_code'] }}</td>
                                     </tr>
-                                @endforeach
+                                @endfor
                             </tbody>
                           </table>
                         </div>

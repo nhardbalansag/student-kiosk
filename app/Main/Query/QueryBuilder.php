@@ -47,14 +47,6 @@ class QueryBuilder extends Model
         ]);
     }
 
-    public static function createPrerequisites($request){
-        Prerequisites::create([
-            'prerequisites_title' => $request['prerequisites_title'],
-            'prerequisites_subject_code' => $request['prerequisites_subject_code'],
-            'prerequisites_subject_id' => $request['prerequisites_subject_id'],
-        ]);
-    }
-
     public static function createSemester($request){
         Semester::create([
             'title' => $request['title'],
@@ -78,6 +70,7 @@ class QueryBuilder extends Model
         CurriculumSubject::create([
             'curiculum_courses_id' => $request['curiculum_courses_id'],
             'subject_id' => $request['subject_id'],
+            'pre_subject_id' => $request['pre_subject_id'],
             'status' => $request['status']
         ]);
     }
@@ -111,10 +104,35 @@ class QueryBuilder extends Model
 
     public static function getStudentSubject($curriculum_id){
 
-        $data = DB::table('curriculum_subjects')
+        $data['pre'] = DB::table('curriculum_subjects')
                 ->join('curriculum_courses', 'curriculum_courses.id', '=', 'curriculum_subjects.curiculum_courses_id')
                 ->join('subjects', 'subjects.id', '=', 'curriculum_subjects.subject_id')
-                ->join('prerequisites', 'subjects.id', '=', 'prerequisites.prerequisites_subject_id')
+                ->join('courses', 'curriculum_courses.course_id', '=', 'courses.id')
+                ->join('curricula', 'curriculum_courses.curriculum_id', '=', 'curricula.id')
+                ->join('student_years', 'curriculum_courses.year_id', '=', 'student_years.id')
+                ->join('semesters', 'curriculum_courses.semester_id', '=', 'semesters.id')
+                ->where('curriculum_subjects.status', 'active')
+                ->where('curriculum_courses.id', $curriculum_id)
+                ->select(
+                    'curriculum_subjects.id as curriculum_subjects_id',
+                    'subjects.title as subject_title',
+                    'subjects.subject_code as subject_subject_code',
+                    'subjects.total_units as subject_total_units',
+                    'subjects.lecture_units as subject_lecture_units',
+                    'subjects.lab_units as subject_lab_units',
+                    'courses.course_title as course_title',
+                    'courses.course_code as course_code',
+                    'curriculum_subjects.pre_subject_id as preReq_subject_code'
+                )
+                ->get();
+
+        return $data;
+    }
+
+    public static function getFirstStudentSubject($curriculum_id){
+
+        $data = DB::table('curriculum_subjects')
+                ->join('curriculum_courses', 'curriculum_courses.id', '=', 'curriculum_subjects.curiculum_courses_id')
                 ->join('courses', 'curriculum_courses.course_id', '=', 'courses.id')
                 ->join('curricula', 'curriculum_courses.curriculum_id', '=', 'curricula.id')
                 ->join('student_years', 'curriculum_courses.year_id', '=', 'student_years.id')
@@ -123,50 +141,13 @@ class QueryBuilder extends Model
                 ->where('curriculum_courses.id', $curriculum_id)
                 ->select(
                     'curriculum_courses.id as curriculum_courses_id',
-                    'subjects.id as subject_id',
-                    'subjects.title as subject_title',
-                    'prerequisites.prerequisites_subject_code as prerequisites_subject_code',
-                    'subjects.subject_code as subject_subject_code',
-                    'subjects.total_units as subject_total_units',
-                    'subjects.lecture_units as subject_lecture_units',
-                    'subjects.lab_units as subject_lab_units',
                     'courses.course_title as course_title',
                     'courses.course_code as course_code',
                     'curricula.tittle as course_curriculum_title',
                     'student_years.year_title as student_years_title',
                     'semesters.title as semesters_title',
                 )
-                ->get();
-
-        return $data;
-    }
-
-    public static function getFirstStudentSubject($curriculum_id){
-        $data = DB::table('curriculum_subjects')
-        ->join('curriculum_courses', 'curriculum_courses.id', '=', 'curriculum_subjects.curiculum_courses_id')
-        ->join('courses', 'curriculum_courses.course_id', '=', 'courses.id')
-        ->join('curricula', 'curriculum_courses.curriculum_id', '=', 'curricula.id')
-        ->join('student_years', 'curriculum_courses.year_id', '=', 'student_years.id')
-        ->join('semesters', 'curriculum_courses.semester_id', '=', 'semesters.id')
-        ->where('curriculum_subjects.status', 'active')
-        ->where('curriculum_courses.id', $curriculum_id)
-        ->select(
-            'curriculum_courses.id as curriculum_courses_id',
-            'courses.course_title as course_title',
-            'courses.course_code as course_code',
-            'curricula.tittle as course_curriculum_title',
-            'student_years.year_title as student_years_title',
-            'semesters.title as semesters_title',
-        )
-        ->groupBy(
-            'curriculum_courses_id',
-            'course_title',
-            'course_code',
-            'course_curriculum_title',
-            'student_years_title',
-            'semesters_title'
-        )
-        ->first();
+                ->first();
 
         return $data;
     }
