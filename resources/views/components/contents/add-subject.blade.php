@@ -31,16 +31,16 @@
                             <input name="description" type="text" class="form-control" >
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Total Units</label>
-                            <input name="total_units" type="numeric" class="form-control" >
-                        </div>
-                        <div class="form-group">
                             <label for="exampleInputPassword1">Lecture Units</label>
                             <input name="lecture_units" type="numeric" class="form-control" >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Lab Units</label>
                             <input name="lab_units" type="numeric" class="form-control" >
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Total Units</label>
+                            <input name="total_units" type="numeric" class="form-control" >
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Status</label>

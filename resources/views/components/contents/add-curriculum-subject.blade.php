@@ -46,7 +46,7 @@
                             <select name="pre_subject_id" class="form-select" aria-label="Default select example">
                                 <option value ="{{ null }}">Open this select menu</option>
                                 @forelse($subject as $index)
-                                    <option value = "{{$index->id}}" >{{$index->title}}</option>
+                                    <option value = "{{$index->id}}" >{{$index->subject_code}}</option>
                                 @empty
                                 @endforelse
                             </select>
