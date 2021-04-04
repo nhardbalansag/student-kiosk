@@ -41,7 +41,16 @@
                                 @endforelse
                             </select>
                         </div>
-                        
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Prerequisite Subject</label>
+                            <select name="pre_subject_id" class="form-select" aria-label="Default select example">
+                                <option value ="{{ null }}">Open this select menu</option>
+                                @forelse($subject as $index)
+                                    <option value = "{{$index->id}}" >{{$index->title}}</option>
+                                @empty
+                                @endforelse
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Status</label>
                             <select name="status" required class="form-select" aria-label="Default select example">

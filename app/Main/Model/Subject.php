@@ -13,7 +13,6 @@ class Subject extends Model
         'total_units',
         'lecture_units',
         'lab_units',
-        'subject_id',
         'status'
     ];
 }
