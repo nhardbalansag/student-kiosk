@@ -182,4 +182,5 @@ class StudentController extends Controller
         return view('components.contents.final-output', $data_output_subject);
 
     }
+
 }
