@@ -121,9 +121,6 @@
                                     <div class="mr-3">
                                         <button type="submit" id="checkStatus" type="button" class="btn btn-primary">Check Status</button>
                                     </div>
-                                    <div>
-                                        <button type="button" class="btn btn-danger">Reset</button>
-                                    </div>
                                 </div>
                             </div>
                         </form>
