@@ -3,7 +3,7 @@
 namespace App\Main\Query;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Main\Model\{Curriculum, StudentYear, Course, Semester, Subject, CurriculumCourses, CurriculumSubject, Prerequisites};
+use App\Main\Model\{Curriculum, StudentYear, Course, Semester, Subject, CurriculumCourses, CurriculumSubject, SubjectGrade, LinkCourseProgram};
 use Illuminate\Support\Facades\{Validator, DB};
 
 class QueryBuilder extends Model
@@ -50,6 +50,7 @@ class QueryBuilder extends Model
     public static function createSemester($request){
         Semester::create([
             'title' => $request['title'],
+            'semester_number' => $request['semester_number'],
             'description' => $request['description'],
             'status' => $request['status']
         ]);
@@ -102,6 +103,14 @@ class QueryBuilder extends Model
         return $data;
     }
 
+    public static function getFirstLink($collection, $to_filter, $filter){
+        $data = DB::table($collection)
+                ->where($to_filter, $filter)
+                ->first();
+
+        return $data;
+    }
+
     public static function getStudentSubject($curriculum_id){
 
         $data['pre'] = DB::table('curriculum_subjects')
@@ -147,6 +156,31 @@ class QueryBuilder extends Model
                     'student_years.year_title as student_years_title',
                     'semesters.title as semesters_title',
                 )
+                ->first();
+
+        return $data;
+    }
+
+    public static function createSubjectGrade($request){
+        SubjectGrade::create([
+            'final_grade' => $request['final_grade'],
+            'curriculum_subject_id' => $request['curriculum_subject_id']
+        ]);
+    }
+
+    public static function createLinkCourseProgram($request){
+        LinkCourseProgram::create([
+            'curiculum_courses_id_current' => $request['curiculum_courses_id_current'],
+            'curiculum_courses_id_next' => $request['curiculum_courses_id_next']
+        ]);
+    }
+
+
+    public static function filterSemester($id){
+        $data = DB::table('curriculum_courses')
+                ->join('semesters', 'semesters.id', '=', 'curriculum_courses.semester_id')
+                ->where('curriculum_courses.id', $id)
+                ->select('semesters.*')
                 ->first();
 
         return $data;

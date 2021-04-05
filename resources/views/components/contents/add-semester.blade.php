@@ -18,6 +18,17 @@
                 <form action={{ route('admin.submit-semester') }} method="post">
                     @csrf
                     <div class="card-body">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Semester</label>
+                            <select name="semester_number" required class="form-select" aria-label="Default select example">
+                                <option >Open this select menu</option>
+                                <option value="1">1st</option>
+                                <option value="2">2nd</option>
+                                <option value="3">3rd</option>
+                                <option value="4">4th</option>
+                                <option value="5">Summer</option>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Semester Title</label>
                             <input name="title" type="text" class="form-control" id="exampleInputPassword1">

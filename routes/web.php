@@ -15,6 +15,11 @@ Route::group(['prefix'=>'student','as'=>'student-access.'], function() {
     //student input grades
     Route::get('input-grades/{id}/{student_number}', [StudentController::class, 'inputGrades'])->name('grades');
 
+    //subject output
+    Route::get('output-subject/{curriculum_course_current_id}', [StudentController::class, 'subjectOutput'])->name('subject');
+
+    Route::post('submit-grade-input', [StudentController::class, 'submit_grade_input'])->name('submit-grade-input');
+
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -47,6 +52,10 @@ Route::group(['middleware' => 'auth'], function () {
         //render add curriculum subject
         Route::get('add-curriculum-subject', [AdminController::class, 'view_add_curriculum_subject'])->name('add-curriculum-subject');
         Route::post('submit-curriculum-subject', [AdminController::class, 'submit_curriculum_subject'])->name('submit-curriculum-subject');
+
+        //render add curriculum course program
+        Route::get('add-link-course-program', [AdminController::class, 'view_createLinkCourseProgram'])->name('add-link-course-program');
+        Route::post('submit-link-course-program', [AdminController::class, 'createLinkCourseProgram'])->name('submit-link-course-program');
 
     });
 });

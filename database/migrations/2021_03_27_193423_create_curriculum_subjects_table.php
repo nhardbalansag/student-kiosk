@@ -14,7 +14,7 @@ class CreateCurriculumSubjectsTable extends Migration
     public function up()
     {
         Schema::create('curriculum_subjects', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             //curriculum subjects
             $table->integer('curiculum_courses_id')->unsigned();
             $table->foreign('curiculum_courses_id')
