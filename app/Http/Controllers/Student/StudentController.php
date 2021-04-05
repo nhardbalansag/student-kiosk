@@ -158,6 +158,16 @@ class StudentController extends Controller
                             )
                         );
                     break;
+                    case '5':
+                        array_push(
+                            $retake,
+                            array(
+                                "subject" => array(
+                                    'subject_title' => $preqArray[$increment]['subject']['subject_title']
+                                )
+                            )
+                        );
+                    break;
                 }
 
                 $increment++;

@@ -291,9 +291,9 @@ class AdminController extends Controller
             $filter_schoolYear_second = QueryBuilder::getFirst('student_years', 'id', $filterData_second->year_id); // semester
             $filter_course_second = QueryBuilder::getFirst('courses', 'id', $filterData_second->course_id); // course
 
-            if($filter_semester->semester_number > $filter_semester_second->semester_number && $filter_schoolYear->id ===  $filter_schoolYear_second->id){
-                return redirect()->back()->with('error', 'Error adding data');
-            }else{
+            // if($filter_semester->semester_number > $filter_semester_second->semester_number && $filter_schoolYear->id === $filter_schoolYear_second->id){
+            //     return redirect()->back()->with('error', 'Error adding data');
+            // }else{
                 if(!$filter = QueryBuilder::getFirstLink('link_course_programs', 'curiculum_courses_id_current', $request['curiculum_courses_id_current'])){
                     if($request['curiculum_courses_id_current'] !== $request['curiculum_courses_id_next']){
 
@@ -311,7 +311,7 @@ class AdminController extends Controller
                 }else{
                     return redirect()->back()->with('error', 'Error adding data');
                 }
-            }
+            // }
         }
     }
 }
