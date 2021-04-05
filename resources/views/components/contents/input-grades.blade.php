@@ -45,7 +45,7 @@
                         </div>
                         <!-- ./card-header -->
                         <form action="{{ route('student-access.submit-grade-input') }}" method="post">
-                            {{-- @csrf --}}
+                            @csrf
                             <input name="curriculum_course_id" type="text" value={{ $info->curriculum_courses_id }} hidden>
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
