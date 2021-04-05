@@ -8,6 +8,7 @@ class Semester extends Model
 {
     protected $fillable = [
         'title',
+        'semester_number',
         'description',
         'status'
     ];

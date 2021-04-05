@@ -44,62 +44,80 @@
                             </div>
                         </div>
                         <!-- ./card-header -->
-                        <div class="card-body">
-                          <table class="table table-bordered table-hover">
-                            <thead>
-                              <tr>
-                                <th>Final Grade</th>
-                                <th>Subject Code</th>
-                                <th>Description</th>
-                                <th>Lec</th>
-                                <th>Lab</th>
-                                <th>Units</th>
-                                <th>Prereq</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                @for($index = 0; $index < count($pre['data']); $index++)
-                                    <tr  aria-expanded="true">
-                                        <td>
-                                            <div class="form-group" data-select2-id="80">
-                                                <select class="select2bs4 select2-hidden-accessible" multiple="" data-placeholder="Select Grade" style="width: 100%;"  tabindex="-1" aria-hidden="true">
-                                                    <option>1</option>
-                                                    <option>1.25</option>
-                                                    <option>1.50</option>
-                                                    <option>1.75</option>
-                                                    <option>2.00</option>
-                                                    <option>2.25</option>
-                                                    <option>2.50</option>
-                                                    <option>2.75</option>
-                                                    <option>3.00</option>
-                                                    <option>3.25</option>
-                                                    <option>3.50</option>
-                                                    <option>3.75</option>
-                                                    <option>4.00</option>
-                                                    <option>4.25</option>
-                                                    <option>4.50</option>
-                                                    <option>4.75</option>
-                                                    <option>5.00</option>
-                                                    <option>W</option>
-                                                    <option>D</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                        <td>{{ $pre['data'][$index]['subject']['subject_subject_code'] }}</td>
-                                        <td>{{ $pre['data'][$index]['subject']['subject_title'] }}</td>
-                                        <td>{{ $pre['data'][$index]['subject']['subject_lecture_units'] }}</td>
-                                        <td>{{ $pre['data'][$index]['subject']['subject_lab_units'] }}</td>
-                                        <td>{{ $pre['data'][$index]['subject']['subject_total_units'] }}</td>
-                                        <td>{{ $pre['data'][$index]['pre']['pre_subj_code'] }}</td>
-                                    </tr>
-                                @endfor
-                            </tbody>
-                          </table>
-                        </div>
-                        <div class="card-body">
-                            <button type="button" class="btn btn-primary">Check Status</button>
-                            <button type="button" class="btn btn-danger">Reset</button>
-                        </div>
+                        <form action="{{ route('student-access.submit-grade-input') }}" method="post">
+                            @csrf
+                            <input name="curriculum_course_id" type="text" value={{ $info->curriculum_courses_id }} hidden>
+                            <div class="card-body">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Final Grade</th>
+                                            <th>Subject Code</th>
+                                            <th>Description</th>
+                                            <th>Lec</th>
+                                            <th>Lab</th>
+                                            <th>Units</th>
+                                            <th>Prereq</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for($index = 0; $index < count($pre['data']); $index++)
+                                            <tr aria-expanded="true">
+                                                <td>
+                                                    {{-- @livewire('set-grade', ["curriculum_subjects_id" => $pre['data'][$index]['subject']['curriculum_subjects_id'] ]) --}}
+                                                    <div class="form-group" data-select2-id="80">
+                                                        <select name="{{ 'input_' .  $index }}" required class="form-select" aria-label="Default select example">
+                                                            <option value="1.0">1.0</option>
+                                                            <option value="1.1">1.1</option>
+                                                            <option value="1.2">1.2</option>
+                                                            <option value="1.3">1.3</option>
+                                                            <option value="1.4">1.4</option>
+                                                            <option value="1.5">1.5</option>
+                                                            <option value="1.6">1.6</option>
+                                                            <option value="1.7">1.7</option>
+                                                            <option value="1.8">1.8</option>
+                                                            <option value="1.9">1.9</option>
+                                                            <option value="2">2</option>
+                                                            <option value="2.1">2.1</option>
+                                                            <option value="2.2">2.2</option>
+                                                            <option value="2.3">2.3</option>
+                                                            <option value="2.4">2.4</option>
+                                                            <option value="2.5">2.5</option>
+                                                            <option value="2.6">2.6</option>
+                                                            <option value="2.7">2.7</option>
+                                                            <option value="2.8">2.8</option>
+                                                            <option value="2.9">2.9</option>
+                                                            <option value="3">3</option>
+                                                            <option value="5">5</option>
+                                                            <option value="inc">INCOMPLETE</option>
+                                                            <option value="hna">HNA</option>
+                                                            <option value="w">WITHDRAWAL</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>{{ $pre['data'][$index]['subject']['subject_subject_code'] }}</td>
+                                                <td>{{ $pre['data'][$index]['subject']['subject_title'] }}</td>
+                                                <td>{{ $pre['data'][$index]['subject']['subject_lecture_units'] }}</td>
+                                                <td>{{ $pre['data'][$index]['subject']['subject_lab_units'] }}</td>
+                                                <td>{{ $pre['data'][$index]['subject']['subject_total_units'] }}</td>
+                                                <td>{{ $pre['data'][$index]['pre']['pre_subj_code'] }}</td>
+                                            </tr>
+                                        @endfor
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="mr-3">
+                                        {{-- @livewire('output-final-status',['current_curriculum' => $info->curriculum_courses_id]) --}}
+                                        <button type="submit" id="checkStatus" type="button" class="btn btn-primary">Check Status</button>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="btn btn-danger">Reset</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                       </div>
                     </div>
                 </div>
@@ -112,8 +130,16 @@
 @endsection
 
 @push('student-pages-scripts')
+
     <script>
         $(function () {
+
+            $("#checkStatus").click(function () {
+                let data = $(".input_grade").val();
+
+                console.log(data);
+            })
+
           //Initialize Select2 Elements
           $('.select2').select2()
 
