@@ -203,11 +203,11 @@ class QueryBuilder extends Model
                     'curricula.id as curricula_id'
                 )
                 ->groupBy(
-                    'course_id',
-                    'course_title',
-                    'course_code',
-                    'course_status',
-                    'curricula_id'
+                    'courses.id',
+                    'courses.course_title',
+                    'courses.course_code',
+                    'courses.status',
+                    'curricula.id'
                     )
                 ->get();
 
@@ -232,11 +232,11 @@ class QueryBuilder extends Model
                     'curricula.id as curricula_id'
                 )
                 ->groupBy(
-                    'student_years_id',
-                    'course_id',
-                    'student_years_title',
-                    'student_years_status',
-                    'curricula_id'
+                    'courses.id',
+                    'student_years.year_title',
+                    'student_years.status',
+                    'student_years.id',
+                    'curricula.id'
                 )
                 ->get();
 
@@ -259,9 +259,9 @@ class QueryBuilder extends Model
                     'curriculum_courses.id as curriculum_courses_id'
                 )
                 ->groupBy(
-                    'title',
-                    'status',
-                    'curriculum_courses_id'
+                    'semesters.title',
+                    'semesters.status',
+                    'curriculum_courses.id'
                 )
                 ->get();
 
