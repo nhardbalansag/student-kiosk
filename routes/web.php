@@ -57,6 +57,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('add-link-course-program', [AdminController::class, 'view_createLinkCourseProgram'])->name('add-link-course-program');
         Route::post('submit-link-course-program', [AdminController::class, 'createLinkCourseProgram'])->name('submit-link-course-program');
 
+        Route::get('report/view-courses/{curriculum_id}', [AdminController::class, 'view_courses'])->name('view-courses');
+        Route::get('report/view-year/{curriculum_id}/{course_id}', [AdminController::class, 'view_year'])->name('view-year');
+        Route::get('report/view-semester/{course_id}/{student_years_id}/{curricula_id}', [AdminController::class, 'view_semester'])->name('view-semester');
+        Route::get('report/view-subject/{id}', [AdminController::class, 'view_subject'])->name('view-subject');
+
     });
 });
 

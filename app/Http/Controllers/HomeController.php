@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Main\Query\QueryBuilder;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('components.contents.cms-home');
+        $data['curriculum'] = QueryBuilder::getAllData('curricula', 'active');
+
+        return view('components.contents.cms-home', $data);
     }
 
 }

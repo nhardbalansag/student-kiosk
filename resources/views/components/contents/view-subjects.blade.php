@@ -10,33 +10,34 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Curriculum</th>
-                  <th>Start</th>
-                  <th>End</th>
-                  <th>Status</th>
-                  <th>View</th>
+                    <th>Subject Code</th>
+                    <th>Subject Title</th>
+                    <th>Lec</th>
+                    <th>Lab</th>
+                    <th>Units</th>
+                    <th>Prereq</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($curriculum as $key => $index)
+                    @for($index = 0; $index < count($pre['data']); $index++)
                     <tr>
-                        <td class="font-weight-bolder">{{ $index->tittle }}</td>
-                        <td>{{  $index->year_start_curiculum }}</td>
-                        <td>{{  $index->year_end_curiculum }}</td>
-                        <td>{{  $index->status }}</td>
-                        <td class="d-flex justify-content-center">
-                            <a class="btn btn-primary" href="/admin/report/view-courses/{{ $index->id }}" role="button">View</a>
-                        </td>
+                        <td>{{ $pre['data'][$index]['subject']['subject_subject_code'] }}</td>
+                        <td>{{ $pre['data'][$index]['subject']['subject_title'] }}</td>
+                        <td>{{ $pre['data'][$index]['subject']['subject_lecture_units'] }}</td>
+                        <td>{{ $pre['data'][$index]['subject']['subject_lab_units'] }}</td>
+                        <td>{{ $pre['data'][$index]['subject']['subject_total_units'] }}</td>
+                        <td>{{ $pre['data'][$index]['pre']['pre_subj_code'] }}</td>
                     </tr>
-                @endforeach
+                    @endfor
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th>Curriculum</th>
-                    <th>Start</th>
-                    <th>End</th>
-                    <th>Status</th>
-                    <th>View</th>
+                    <th>Subject Code</th>
+                    <th>Subject Title</th>
+                    <th>Lec</th>
+                    <th>Lab</th>
+                    <th>Units</th>
+                    <th>Prereq</th>
                 </tr>
                 </tfoot>
               </table>

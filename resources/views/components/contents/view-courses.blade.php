@@ -10,31 +10,28 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Curriculum</th>
-                  <th>Start</th>
-                  <th>End</th>
+                  <th>Course Code</th>
+                  <th>Course Title</th>
                   <th>Status</th>
                   <th>View</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($curriculum as $key => $index)
+                @foreach ($courses as $key => $index)
                     <tr>
-                        <td class="font-weight-bolder">{{ $index->tittle }}</td>
-                        <td>{{  $index->year_start_curiculum }}</td>
-                        <td>{{  $index->year_end_curiculum }}</td>
-                        <td>{{  $index->status }}</td>
+                        <td class="font-weight-bolder">{{ $index->course_code }}</td>
+                        <td>{{  $index->course_title }}</td>
+                        <td>{{  $index->course_status }}</td>
                         <td class="d-flex justify-content-center">
-                            <a class="btn btn-primary" href="/admin/report/view-courses/{{ $index->id }}" role="button">View</a>
+                            <a class="btn btn-primary" href="/admin/report/view-year/{{ $index->curricula_id }}/{{ $index->course_id }}" role="button">View</a>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th>Curriculum</th>
-                    <th>Start</th>
-                    <th>End</th>
+                    <th>Course Code</th>
+                    <th>Course Title</th>
                     <th>Status</th>
                     <th>View</th>
                 </tr>
