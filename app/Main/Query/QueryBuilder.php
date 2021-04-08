@@ -185,4 +185,87 @@ class QueryBuilder extends Model
 
         return $data;
     }
+
+    public static function getcourses($id){
+        $data = DB::table('curriculum_courses')
+                ->join('curriculum_subjects', 'curriculum_courses.id', '=', 'curriculum_subjects.curiculum_courses_id')
+                ->join('subjects', 'subjects.id', '=', 'curriculum_subjects.subject_id')
+                ->join('courses', 'curriculum_courses.course_id', '=', 'courses.id')
+                ->join('curricula', 'curriculum_courses.curriculum_id', '=', 'curricula.id')
+                ->join('student_years', 'curriculum_courses.year_id', '=', 'student_years.id')
+                ->join('semesters', 'curriculum_courses.semester_id', '=', 'semesters.id')
+                ->where('curricula.id', $id)
+                ->select(
+                    'courses.id as course_id',
+                    'courses.course_title as course_title',
+                    'courses.course_code as course_code',
+                    'courses.status as course_status',
+                    'curricula.id as curricula_id'
+                )
+                ->groupBy(
+                    'course_id',
+                    'course_title',
+                    'course_code',
+                    'course_status',
+                    'curricula_id'
+                    )
+                ->get();
+
+        return $data;
+    }
+
+    public static function getYearlevels($curricula_id, $courses_id){
+        $data = DB::table('curriculum_subjects')
+                ->join('curriculum_courses', 'curriculum_courses.id', '=', 'curriculum_subjects.curiculum_courses_id')
+                ->join('subjects', 'subjects.id', '=', 'curriculum_subjects.subject_id')
+                ->join('courses', 'curriculum_courses.course_id', '=', 'courses.id')
+                ->join('curricula', 'curriculum_courses.curriculum_id', '=', 'curricula.id')
+                ->join('student_years', 'curriculum_courses.year_id', '=', 'student_years.id')
+                ->join('semesters', 'curriculum_courses.semester_id', '=', 'semesters.id')
+                ->where('curriculum_courses.course_id', $courses_id)
+                ->where('curriculum_courses.curriculum_id', $curricula_id)
+                ->select(
+                    'courses.id as course_id',
+                    'student_years.year_title as student_years_title',
+                    'student_years.status as student_years_status',
+                    'student_years.id as student_years_id',
+                    'curricula.id as curricula_id'
+                )
+                ->groupBy(
+                    'student_years_id',
+                    'course_id',
+                    'student_years_title',
+                    'student_years_status',
+                    'curricula_id'
+                )
+                ->get();
+
+        return $data;
+    }
+
+    public static function view_semester($course_id, $student_years_id, $curricula_id){
+
+        $data = DB::table('curriculum_courses')
+                ->join('courses', 'curriculum_courses.course_id', '=', 'courses.id')
+                ->join('curricula', 'curriculum_courses.curriculum_id', '=', 'curricula.id')
+                ->join('student_years', 'curriculum_courses.year_id', '=', 'student_years.id')
+                ->join('semesters', 'curriculum_courses.semester_id', '=', 'semesters.id')
+                ->where('curriculum_courses.course_id', $course_id)
+                ->where('curriculum_courses.year_id', $student_years_id)
+                ->where('curriculum_courses.curriculum_id', $curricula_id)
+                ->select(
+                    'semesters.title as title',
+                    'semesters.status as status',
+                    'curriculum_courses.id as curriculum_courses_id'
+                )
+                ->groupBy(
+                    'title',
+                    'status',
+                    'curriculum_courses_id'
+                )
+                ->get();
+
+        return $data;
+
+    }
 }
