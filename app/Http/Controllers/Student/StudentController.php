@@ -84,6 +84,8 @@ class StudentController extends Controller
 
         $comply = array();
         $retake = array();
+        $failed = array();
+        $nextAvailableSubject = array();
         $preqArray = array();
         $next_subject_array_data['data'] = array();
         $increment = 0;
@@ -100,7 +102,8 @@ class StudentController extends Controller
                     $next_subject_array_data['data'],
                     array(
                         'subject' => array(
-                            'subject_title' => $data->subject_title
+                            'subject_title' => $data->subject_title,
+                            'pre_subj' => $data->preReq_subject_id
                         )
                     )
                 );
@@ -121,7 +124,7 @@ class StudentController extends Controller
                         'subject_title' => $data->subject_title
                     ),
                     'pre' => array(
-                        'subject_title' => $datapre === null ? 'none' : $datapre->title
+                        'subject_id' => $data->subject_id
                     )
                 )
             );
@@ -138,6 +141,7 @@ class StudentController extends Controller
                             )
                         )
                     );
+                    array_push($failed, $preqArray[$increment]['pre']['subject_id']);
                 break;
                 case 'hna':
                     array_push(
@@ -148,6 +152,7 @@ class StudentController extends Controller
                             )
                         )
                     );
+                    array_push($failed, $preqArray[$increment]['pre']['subject_id']);
                 break;
                 case 'w':
                     array_push(
@@ -158,6 +163,7 @@ class StudentController extends Controller
                             )
                         )
                     );
+                    array_push($failed, $preqArray[$increment]['pre']['subject_id']);
                 break;
                 case '5':
                     array_push(
@@ -168,6 +174,7 @@ class StudentController extends Controller
                             )
                         )
                     );
+                    array_push($failed, $preqArray[$increment]['pre']['subject_id']);
                 break;
                 default:
                     $passed++;
@@ -175,6 +182,20 @@ class StudentController extends Controller
             }
 
             $increment++;
+        }
+
+        for ($i = 0; $i < count($next_subject_array_data['data']); $i++) {
+            if(count($failed) > 0){
+                for ($j = 0; $j  < count($failed); $j ++) {
+                    if($next_subject_array_data['data'][$i]['subject']['pre_subj'] === $failed[$j]){
+                        array_push($nextAvailableSubject, $next_subject_array_data['data'][$i]['subject']['subject_title']);
+                        array_splice($next_subject_array_data['data'], $i, 1);
+                    }
+                }
+            }else{
+                array_push($nextAvailableSubject, $next_subject_array_data['data'][$i]['subject']['subject_title']);
+                break;
+            }
         }
 
         $data_output_subject['output'] = array(

@@ -131,7 +131,9 @@ class QueryBuilder extends Model
                     'subjects.lab_units as subject_lab_units',
                     'courses.course_title as course_title',
                     'courses.course_code as course_code',
-                    'curriculum_subjects.pre_subject_id as preReq_subject_code'
+                    'curriculum_subjects.pre_subject_id as preReq_subject_code',
+                    'curriculum_subjects.subject_id as subject_id',
+                    'curriculum_subjects.pre_subject_id as preReq_subject_id'
                 )
                 ->get();
 
