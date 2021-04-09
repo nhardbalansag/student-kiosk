@@ -87,6 +87,7 @@ class StudentController extends Controller
         $preqArray = array();
         $next_subject_array_data['data'] = array();
         $increment = 0;
+        $passed = 0;
 
         $curriculum_course_id = $request['curriculum_course_id'];
         $data['course_current_id'] = QueryBuilder::getFirstLink('link_course_programs', 'curiculum_courses_id_current', $curriculum_course_id);
@@ -168,6 +169,9 @@ class StudentController extends Controller
                         )
                     );
                 break;
+                default:
+                    $passed++;
+                break;
             }
 
             $increment++;
@@ -176,6 +180,7 @@ class StudentController extends Controller
         $data_output_subject['output'] = array(
             "comply" => $comply,
             "retake" => $retake,
+            "passed" => $passed,
             "next_subject" => $next_subject_array_data
         );
 

@@ -2,7 +2,7 @@
 @section('content-pages')
     <div>
         <div class="row col-12 col-md-12">
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <div>
                     <div>
                         <h3>List of subjects to comply:</h3>
@@ -31,8 +31,18 @@
                         </ul>
                     </div>
                 </div>
+                <div>
+                    <div>
+                        <div>
+                            <p class="text-primary">Total Subject Passed: {{ $output['passed'] }}</p>
+                        </div>
+                        <div>
+                            <p class="text-danger">Total Subject Failed: {{ count($output['comply']) + count($output['retake'])}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <div>
                     <h3>List  of available subjects to take for the next semester</h3>
                 </div>

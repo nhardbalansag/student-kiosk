@@ -60,7 +60,7 @@
                                     {{ env('APP_NAME') }}
                                 </h4>
                             </div>
-                            <div class="col-md-8">
+                            <div class="d-none d-md-block col-md-8">
                                 <p class="text-white">
                                     to use: Click START, then  select curriculum, afterwards select grades from dropdown in each subject.
                                 </p>

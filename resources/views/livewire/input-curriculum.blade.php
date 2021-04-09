@@ -23,8 +23,8 @@
        </form>
     </div>
     <div class="mt-5 d-flex justify-content-center">
-        <div class="w-50">
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam autem ea optio, ex illo deserunt exercitationem assumenda ullam consequatur cum at velit nihil quas sequi nam quibusdam suscipit placeat quia.</p>
+        <div>
+            <p>to use: Click START, then  select curriculum, afterwards select grades from dropdown in each subject..</p>
         </div>
     </div>
 
