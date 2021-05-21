@@ -55,5 +55,17 @@
                 </div>
             </div>
         </div>
+        <div class="row no-print">
+            <div class="col-12">
+                <a
+                    href="{{ route('student-access.print',['inquiryId' => $output['inquiryId']]) }}"
+                    rel="noopener"
+                    target="_blank"
+                    class="btn btn-default">
+                    <i class="fas fa-print"></i>
+                    Print
+                </a>
+            </div>
+        </div>
     </div>
 @endsection

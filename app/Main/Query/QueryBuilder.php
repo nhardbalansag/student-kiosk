@@ -3,9 +3,8 @@
 namespace App\Main\Query;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Main\Model\{Curriculum, StudentYear, Course, Semester, Subject, CurriculumCourses, CurriculumSubject, SubjectGrade, LinkCourseProgram};
+use App\Main\Model\{Curriculum, StudentYear, Course, Semester, Subject, CurriculumCourses, CurriculumSubject, SubjectGrade, LinkCourseProgram, StudentInquiryModel, StudentSubjectResultModel, PassedInfoModel};
 use Illuminate\Support\Facades\{Validator, DB};
-
 class QueryBuilder extends Model
 {
     public static function createCurriculum($request){
@@ -83,6 +82,17 @@ class QueryBuilder extends Model
 
         return $data;
     }
+
+    public static function getInquiryDataGet($colection, $firstColumn, $firstfilter, $secondColumn, $secondfilter){
+
+        $data = DB::table($colection)
+                ->where($firstColumn, $firstfilter)
+                ->where($secondColumn, $secondfilter)
+                ->get();
+
+        return $data;
+    }
+
 
     public static function getCourseData(){
         $data = DB::table('curriculum_courses')
@@ -269,5 +279,42 @@ class QueryBuilder extends Model
 
         return $data;
 
+    }
+
+
+    public static function createStudentInquiry($request){
+
+        $data = StudentInquiryModel::create([
+                    'student_number' => $request
+                ]);
+
+        return $data;
+    }
+
+    public static function createStudentSubjectResultModel(
+        $student_inquiry_id,
+        $subject_title,
+        $subject_prerequites_id,
+        $status
+    ){
+
+        $data = StudentSubjectResultModel::create([
+            'student_inquiry_id' => $student_inquiry_id,
+            'subject_title' => $subject_title,
+            'subject_prerequites_id' => $subject_prerequites_id,
+            'status' => $status
+        ]);
+
+        return $data;
+    }
+
+    public static function createPassedInfoModel($id, $count){
+
+        $data = PassedInfoModel::create([
+            'passedCount' => $count,
+            'student_inquiry_id' => $id
+        ]);
+
+        return $data;
     }
 }

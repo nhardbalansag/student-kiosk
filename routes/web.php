@@ -13,10 +13,12 @@ Route::group(['prefix'=>'student','as'=>'student-access.'], function() {
     Route::get('input-curriculum', [StudentController::class, 'inputCurriculum'])->name('curriculum');
 
     //student input grades
-    Route::get('input-grades/{id}/{student_number}', [StudentController::class, 'inputGrades'])->name('grades');
+    Route::post('input-grades', [StudentController::class, 'inputGrades'])->name('input-grades');
 
     //subject output
     Route::get('output-subject/{curriculum_course_current_id}', [StudentController::class, 'subjectOutput'])->name('subject');
+
+    Route::get('print', [StudentController::class, 'printdata'])->name('print');
 
     Route::post('submit-grade-input', [StudentController::class, 'submit_grade_input'])->name('submit-grade-input');
 
