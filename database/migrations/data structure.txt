@@ -50,6 +50,16 @@ curriculum_output_subject
     - subject_id
 
 
+student_inquiry
+    - student_number (remove)
+    - curriculum (remove)
 
+studentSubjectsResults
+    - student_inquiry_id
+    - subject_title
+    - subject_prerequites_id
+    - status
 
-
+passedInfo
+    - student_inquiry_id
+    - passedCount

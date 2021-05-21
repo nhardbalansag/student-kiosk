@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <!-- ./card-header -->
-                        <form action="{{ route('student-access.submit-grade-input') }}" method="post">
+                        <form action="{{ route('student-access.submit-grade-input', ['studentNumber' => $student_number]) }}" method="post">
                             @csrf
                             <input name="curriculum_course_id" type="text" value={{ $info->curriculum_courses_id }} hidden>
                             <div class="card-body">
@@ -128,7 +128,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam magnam ea quia laborum consequatur alias optio ratione similique mollitia voluptatum cupiditate animi consectetur voluptates cum laboriosam temporibus debitis, earum ipsum?</p>
+                    <p>Above is the List of of required subject for the semester</p>
                 </div>
             </div>
         </div>
