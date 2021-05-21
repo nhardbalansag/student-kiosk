@@ -21,7 +21,9 @@
             </div>
         </div>
     </div>
-    @include('components.includes.footer')
+    @if(Request::route()->getName() !== 'student-access.submit-grade-input' && Request::route()->getName() !== 'student-access.print')
+        @include('components.includes.footer')
+    @endif
 </div>
 
 @endsection
