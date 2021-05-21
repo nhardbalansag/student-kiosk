@@ -2,6 +2,38 @@
 @section('content-pages')
     <div>
         <div class="row col-12 col-md-12">
+            <div class="my-5 card-header">
+                <div class="col-12 col-md-12">
+                    <div class="row col-12 col-md-8">
+                        <div class="col-12 col-md-3">
+                            <span class="font-weight-bold">Student Number</span>
+                            <p class="font-weight-light">{{ $output['student_number'] }}</p>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <span class="font-weight-bold">Student Name</span>
+                            <p class="font-weight-light text-capitalize">{{ $output['student_lastname'] . ", " . $output['student_firstname'] . " " . $output['student_middlename'] }}</p>
+                        </div>
+                    </div>
+                    <div class="row col-12 col-md-8">
+                        <div class="col-12 col-md-3">
+                            <span class="font-weight-bold">Course</span>
+                            <p class="font-weight-light">{{ $output['course_title'] }} ({{ $output['course_code'] }})</p>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <span class="font-weight-bold">Curriculum</span>
+                            <p class="font-weight-light">{{ $output['course_curriculum_title'] }}</p>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <span class="font-weight-bold">Year</span>
+                            <p class="font-weight-light">{{ $output['student_years_title'] }}</p>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <span class="font-weight-bold">Semester</span>
+                            <p class="font-weight-light">{{ $output['semesters_title'] }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-12 col-md-6">
                 <div>
                     <div>

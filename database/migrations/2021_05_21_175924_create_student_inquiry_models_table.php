@@ -16,6 +16,18 @@ class CreateStudentInquiryModelsTable extends Migration
         Schema::create('student_inquiry_models', function (Blueprint $table) {
             $table->increments('id');
             $table->string('student_number');
+            $table->string('student_firstname');
+            $table->string('student_middlename')->nullable();
+            $table->string('student_lastname');
+
+            // foreign
+            $table->integer('curriculumId')->unsigned();
+            $table->foreign('curriculumId')
+            ->references('id')
+            ->on('curriculum_courses')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

@@ -20,31 +20,39 @@
                     <div class="col-12">
                       <div class="">
                         <div class="card-header">
-                            <div class="row col-12 col-md-12">
-                                <div class="col-12 col-md-3">
-                                    <span class="font-weight-bold">Student Number</span>
-                                    <p class="font-weight-light">{{ $student_number }}</p>
+                            <div class="col-12 col-md-12">
+                                <div class="row col-12 col-md-8">
+                                    <div class="col-12 col-md-3">
+                                        <span class="font-weight-bold">Student Number</span>
+                                        <p class="font-weight-light">{{ $student_number }}</p>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <span class="font-weight-bold">Student Name</span>
+                                        <p class="font-weight-light text-capitalize">{{ $student_lastname . ", "  . $student_firstname . " " . $student_middlename }}</p>
+                                    </div>
                                 </div>
-                                <div class="col-12 col-md-3">
-                                    <span class="font-weight-bold">Curriculum</span>
-                                    <p class="font-weight-light">{{ $info->course_curriculum_title }}</p>
-                                </div>
-                                <div class="col-12 col-md-2">
-                                    <span class="font-weight-bold">Year</span>
-                                    <p class="font-weight-light">{{ $info->student_years_title }}</p>
-                                </div>
-                                <div class="col-12 col-md-2">
-                                    <span class="font-weight-bold">Course</span>
-                                    <p class="font-weight-light">{{ $info->course_code }}</p>
-                                </div>
-                                <div class="col-12 col-md-2">
-                                    <span class="font-weight-bold">Semester</span>
-                                    <p class="font-weight-light">{{ $info->semesters_title }}</p>
+                                <div class="row col-12 col-md-8">
+                                    <div class="col-12 col-md-4">
+                                        <span class="font-weight-bold">Curriculum</span>
+                                        <p class="font-weight-light">{{ $info->course_curriculum_title }}</p>
+                                    </div>
+                                    <div class="col-12 col-md-2">
+                                        <span class="font-weight-bold">Year</span>
+                                        <p class="font-weight-light">{{ $info->student_years_title }}</p>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <span class="font-weight-bold">Course</span>
+                                        <p class="font-weight-light">{{ $info->course_code }}</p>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <span class="font-weight-bold">Semester</span>
+                                        <p class="font-weight-light">{{ $info->semesters_title }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!-- ./card-header -->
-                        <form action="{{ route('student-access.submit-grade-input', ['studentNumber' => $student_number]) }}" method="post">
+                        <form action="{{ route('student-access.submit-grade-input', ['studentNumber' => $studentNumber]) }}" method="post">
                             @csrf
                             <input name="curriculum_course_id" type="text" value={{ $info->curriculum_courses_id }} hidden>
                             <div class="card-body">
