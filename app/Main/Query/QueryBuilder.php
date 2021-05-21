@@ -282,10 +282,14 @@ class QueryBuilder extends Model
     }
 
 
-    public static function createStudentInquiry($request){
+    public static function createStudentInquiry($student_number, $student_firstname, $student_middlename, $student_lastname, $curriculumId){
 
         $data = StudentInquiryModel::create([
-                    'student_number' => $request
+                    'student_number' => $student_number,
+                    'student_firstname' => $student_firstname,
+                    'student_middlename' => $student_middlename,
+                    'student_lastname' => $student_lastname,
+                    'curriculumId' => $curriculumId,
                 ]);
 
         return $data;

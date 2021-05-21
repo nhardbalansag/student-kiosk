@@ -24,6 +24,8 @@ class StudentController extends Controller
 
         $rules = [
             'studentNumberInfo' => ['required', 'string', 'max:255'],
+            'student_firstname' => ['required', 'string', 'max:255'],
+            'student_lastname' => ['required', 'string', 'max:255'],
             'curriculuminfo' => ['required', 'numeric']
         ];
 
@@ -62,17 +64,28 @@ class StudentController extends Controller
                 );
             }
 
+            $student_number = $request['studentNumberInfo'];
+            $student_firstname = $request['student_firstname'];
+            $student_middlename = $request['student_middlename'];
+            $student_lastname = $request['student_lastname'];
+            $curriculumId = $request['curriculuminfo'];
+
+            $studentInquiry = QueryBuilder::createStudentInquiry($student_number, $student_firstname, $student_middlename, $student_lastname, $curriculumId);
+
             return view(
                 'components.contents.input-grades',
                 [
                     'info'=> $info,
                     'pre' => $preqArray,
                     'student_number' => $request['studentNumberInfo'],
+                    'student_firstname' => $request['student_firstname'],
+                    'student_middlename' => $request['student_middlename'],
+                    'student_lastname' => $request['student_lastname'],
+                    'studentNumber' => $studentInquiry->id
                 ]
             );
 
         }
-
 
     }
 
@@ -115,7 +128,7 @@ class StudentController extends Controller
             $increment = 0;
             $passed = 0;
 
-            $studentInquiry = QueryBuilder::createStudentInquiry($_GET['studentNumber']);
+            $studentInquiry = $_GET['studentNumber'];
 
             $curriculum_course_id = $request['curriculum_course_id'];
             $data['course_current_id'] = QueryBuilder::getFirstLink('link_course_programs', 'curiculum_courses_id_current', $curriculum_course_id);
@@ -170,7 +183,7 @@ class StudentController extends Controller
                         array_push($failed, $preqArray[$increment]['pre']['subject_id']);
 
                         //create
-                        $student_inquiry_id = $studentInquiry->id;
+                        $student_inquiry_id = $studentInquiry;
                         $subject_title = $preqArray[$increment]['subject']['subject_title'];
                         $subject_prerequites_id = $preqArray[$increment]['pre']['subject_id'];
                         $status = "comply";
@@ -195,7 +208,7 @@ class StudentController extends Controller
                         array_push($failed, $preqArray[$increment]['pre']['subject_id']);
 
                         //create
-                        $student_inquiry_id = $studentInquiry->id;
+                        $student_inquiry_id = $studentInquiry;
                         $subject_title = $preqArray[$increment]['subject']['subject_title'];
                         $subject_prerequites_id = $preqArray[$increment]['pre']['subject_id'];
                         $status = "retake";
@@ -220,7 +233,7 @@ class StudentController extends Controller
                         array_push($failed, $preqArray[$increment]['pre']['subject_id']);
 
                         //create
-                        $student_inquiry_id = $studentInquiry->id;
+                        $student_inquiry_id = $studentInquiry;
                         $subject_title = $preqArray[$increment]['subject']['subject_title'];
                         $subject_prerequites_id = $preqArray[$increment]['pre']['subject_id'];
                         $status = "retake";
@@ -245,7 +258,7 @@ class StudentController extends Controller
                         array_push($failed, $preqArray[$increment]['pre']['subject_id']);
 
                         //create
-                        $student_inquiry_id = $studentInquiry->id;
+                        $student_inquiry_id = $studentInquiry;
                         $subject_title = $preqArray[$increment]['subject']['subject_title'];
                         $subject_prerequites_id = $preqArray[$increment]['pre']['subject_id'];
                         $status = "retake";
@@ -273,7 +286,7 @@ class StudentController extends Controller
                             array_push($nextAvailableSubject, $next_subject_array_data['data'][$i]['subject']['subject_title']);
 
                             //create
-                            $student_inquiry_id = $studentInquiry->id;
+                            $student_inquiry_id = $studentInquiry;
                             $subject_title = $next_subject_array_data['data'][$i]['subject']['subject_title'];
                             $subject_prerequites_id = null;
                             $status = "next";
@@ -292,30 +305,41 @@ class StudentController extends Controller
                     array_push($nextAvailableSubject, $next_subject_array_data['data'][$i]['subject']['subject_title']);
 
                     //create
-                    $student_inquiry_id = $studentInquiry->id;
+                    $student_inquiry_id = $studentInquiry;
                     $subject_title = $next_subject_array_data['data'][$i]['subject']['subject_title'];
                     $subject_prerequites_id = null;
                     $status = "next";
 
-                    QueryBuilder::createStudentSubjectResultModel(
+                    $id = QueryBuilder::createStudentSubjectResultModel(
                         $student_inquiry_id,
                         $subject_title,
                         $subject_prerequites_id,
                         $status
                     );
-
-                    break;
                 }
             }
 
-            QueryBuilder::createPassedInfoModel($studentInquiry->id, $passed);
+            QueryBuilder::createPassedInfoModel($studentInquiry, $passed);
+
+            $studentInfo = QueryBuilder::getFirstLink('student_inquiry_models', 'id', $studentInquiry);
+            $info = QueryBuilder::getFirstStudentSubject($studentInfo->curriculumId);
 
             $data_output_subject['output'] = array(
                 "comply" => $comply,
                 "retake" => $retake,
                 "passed" => $passed,
-                "inquiryId" => $studentInquiry->id,
-                "next_subject" => $next_subject_array_data
+                "inquiryId" => $studentInquiry,
+                "next_subject" => $next_subject_array_data,
+                "student_number" => $studentInfo->student_number,
+                "student_firstname" => $studentInfo->student_firstname,
+                "student_middlename" => $studentInfo->student_middlename,
+                "student_lastname" => $studentInfo->student_lastname,
+
+                "course_title" => $info->course_title,
+                "course_code" => $info->course_code,
+                "course_curriculum_title" => $info->course_curriculum_title,
+                "student_years_title" => $info->student_years_title,
+                "semesters_title" => $info->semesters_title
             );
 
             return view('components.contents.final-output', $data_output_subject);
@@ -330,15 +354,20 @@ class StudentController extends Controller
 
         $getVars = array_keys($_GET);
 
+
         if($getVars[0] === 'inquiryId'){
 
             $inquiryId = $_GET['inquiryId'];
-
+            $data['next_subject'] = null;
             $data['comply'] = QueryBuilder::getInquiryDataGet('student_subject_result_models', 'status', 'comply', 'student_inquiry_id', $inquiryId);
             $data['retake'] = QueryBuilder::getInquiryDataGet('student_subject_result_models', 'status', 'retake', 'student_inquiry_id', $inquiryId);
             $data['next_subject'] = QueryBuilder::getInquiryDataGet('student_subject_result_models', 'status', 'next', 'student_inquiry_id', $inquiryId);
 
             $data['passed'] = QueryBuilder::getFirstLink('passed_info_models', 'student_inquiry_id', $inquiryId);
+
+            $data['studentInfo'] = QueryBuilder::getFirstLink('student_inquiry_models', 'id', $inquiryId);
+
+            $data['curriculum'] = QueryBuilder::getFirstStudentSubject( $data['studentInfo']->curriculumId);
 
             return view('components.contents.print', $data);
 
